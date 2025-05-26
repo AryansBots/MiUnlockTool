@@ -61,7 +61,7 @@ jobs:
 
       - name: Package and Upload
         run: |
-          zip MiUnlockTool_$VERSION.zip MiUnlockTool.py fastboot.py
+          zip MiUnlockTool_$VERSION.zip MiUnlockTool.py
           gh release upload $VERSION MiUnlockTool_$VERSION.zip --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
