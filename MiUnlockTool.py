@@ -248,9 +248,14 @@ print("\n".join([f"{key}: {value}" for key, value in ar.items()]))
 if "code" in ar and ar["code"] == 0:
     encryptData = ar["encryptData"]
     ed = io.BytesIO(bytes.fromhex(encryptData))
-    filename = "encryptData"
+    if os.path.exists("/sdcard"):
+        filename = "/sdcard/encryptData"
+    else:
+        filename = "encryptData"
     with open(filename, "wb") as edfile:
         edfile.write(ed.getvalue())
     print('\n\ncommands to unlock the bootloader:\n')
     print(f'\n\nfastboot stage {filename}')
     print('\nfastboot oem unlock')
+
+
