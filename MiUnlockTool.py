@@ -368,7 +368,10 @@ if choice.lower() == 'q':
 print(p_)
 
 r = RetrieveEncryptData("/api/v3/ahaUnlock", {"appId":"1", "data":{"clientId":"2", "clientVersion":"7.6.727.43", "language":"en", "operate":"unlock", "pcId":hashlib.md5(wb_id.encode("utf-8")).hexdigest(), "product":product, "region":"","deviceInfo":{"boardVersion":"","product":product, "socId":"","deviceName":""}, "deviceToken":token}}).add_nonce().run()
-
+try:
+    print(r)
+except Exception:
+    pass
 if "code" in r and r["code"] == 0:
     ed = io.BytesIO(bytes.fromhex(r["encryptData"]))
     with open("encryptData", "wb") as edfile:
@@ -379,7 +382,6 @@ if "code" in r and r["code"] == 0:
         result_stage = subprocess.run([cmd, "stage", "encryptData"], check=True, capture_output=True, text=True)
         result_unlock = subprocess.run([cmd, "oem", "unlock"], check=True, capture_output=True, text=True)
         print(f"\n{cg}Unlock successful{cgg}\n")
-        os.remove("encryptData")
     except subprocess.CalledProcessError as e:
         print("Error message:", e.stderr)
 elif "descEN" in r:
