@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 echo
-
+apt update -y && apt upgrade -y && apt install python termux-api python-pycryptodomex -y
 source "/data/data/com.termux/files/usr/bin/termux-setup-package-manager" || { echo "Failed to load package manager"; exit 1; }
 
 if [ "$TERMUX_APP_PACKAGE_MANAGER" = "apt" ]; then
@@ -174,7 +174,7 @@ fi
 chmod +x "$PREFIX/bin/miunlock"
 
 _progress
-
+apt --fix-broken install
 echo
 
 printf "\nuse command: \e[1;32mmiunlock\e[0m\n\n"
