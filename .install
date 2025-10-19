@@ -1,7 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 echo
-apt update -y && apt upgrade -y && apt install python termux-api python-pycryptodomex -y
 
 source "/data/data/com.termux/files/usr/bin/termux-setup-package-manager" || { echo "Failed to load package manager"; exit 1; }
 
