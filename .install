@@ -175,7 +175,7 @@ fi
 chmod +x "$PREFIX/bin/miunlock"
 
 _progress
-apt --fix-broken install
+apt --fix-broken install -y
 echo
 
 printf "\nuse command: \e[1;32mmiunlock\e[0m\n\n"
